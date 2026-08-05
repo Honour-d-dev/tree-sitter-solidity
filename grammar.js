@@ -50,6 +50,7 @@ module.exports = grammar({
         [$._primary_expression, $._identifier_path],
         [$._primary_expression, $.member_expression, $._identifier_path],
         [$.member_expression, $._identifier_path],
+        [$._postfix_expression, $._identifier_path],
         [$.layout_specifier, $.struct_expression],
         [$._nameless_parameter, $.parameter],
 
@@ -899,11 +900,23 @@ module.exports = grammar({
             )),
         ),
 
+        _postfix_expression: $ => choice(
+            $.identifier,
+            $.primitive_type,
+            $.user_defined_type,
+            $.parenthesized_expression,
+            $.member_expression,
+            $.call_expression,
+            $.array_access,
+            $.slice_access,
+            $.type_cast_expression,
+            $.payable_conversion_expression,
+            $.meta_type_expression,
+            $.new_expression,
+        ),
+
         member_expression: $ => prec.dynamic(1, seq(
-            field('object', choice(
-                $.expression,
-                $.identifier,
-            )),
+            field('object', $._postfix_expression),
             '.',
             field('property', $.identifier)
         )),

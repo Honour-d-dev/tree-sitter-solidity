@@ -5505,6 +5505,59 @@
         }
       ]
     },
+    "_postfix_expression": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "identifier"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "primitive_type"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "user_defined_type"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "parenthesized_expression"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "member_expression"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "call_expression"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "array_access"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "slice_access"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "type_cast_expression"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "payable_conversion_expression"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "meta_type_expression"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "new_expression"
+        }
+      ]
+    },
     "member_expression": {
       "type": "PREC_DYNAMIC",
       "value": 1,
@@ -5515,17 +5568,8 @@
             "type": "FIELD",
             "name": "object",
             "content": {
-              "type": "CHOICE",
-              "members": [
-                {
-                  "type": "SYMBOL",
-                  "name": "expression"
-                },
-                {
-                  "type": "SYMBOL",
-                  "name": "identifier"
-                }
-              ]
+              "type": "SYMBOL",
+              "name": "_postfix_expression"
             }
           },
           {
@@ -7417,6 +7461,10 @@
     ],
     [
       "member_expression",
+      "_identifier_path"
+    ],
+    [
+      "_postfix_expression",
       "_identifier_path"
     ],
     [
