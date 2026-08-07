@@ -4399,6 +4399,10 @@
         },
         {
           "type": "SYMBOL",
+          "name": "incomplete_member_expression"
+        },
+        {
+          "type": "SYMBOL",
           "name": "payable_conversion_expression"
         },
         {
@@ -5582,6 +5586,36 @@
             "content": {
               "type": "SYMBOL",
               "name": "identifier"
+            }
+          }
+        ]
+      }
+    },
+    "incomplete_member_expression": {
+      "type": "PREC_DYNAMIC",
+      "value": 1,
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "FIELD",
+            "name": "object",
+            "content": {
+              "type": "SYMBOL",
+              "name": "_postfix_expression"
+            }
+          },
+          {
+            "type": "FIELD",
+            "name": "property",
+            "content": {
+              "type": "ALIAS",
+              "content": {
+                "type": "STRING",
+                "value": "."
+              },
+              "named": true,
+              "value": "missing_member_property"
             }
           }
         ]

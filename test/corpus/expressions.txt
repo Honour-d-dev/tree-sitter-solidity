@@ -820,3 +820,48 @@ contract Example {
                   (call_argument
                     (expression
                       (identifier))))))))))))
+
+================================================================================
+incomplete member expression
+================================================================================
+
+contract Example {
+    function example() {
+        this.;
+        msg.;
+        IERC20(token).;
+    }
+}
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (contract_declaration
+    (identifier)
+    (contract_body
+      (function_definition
+        (identifier)
+        (function_body
+          (statement
+            (expression_statement
+              (expression
+                (incomplete_member_expression
+                  (identifier)
+                  (missing_member_property)))))
+          (statement
+            (expression_statement
+              (expression
+                (incomplete_member_expression
+                  (identifier)
+                  (missing_member_property)))))
+          (statement
+            (expression_statement
+              (expression
+                (incomplete_member_expression
+                  (call_expression
+                    (expression
+                      (identifier))
+                    (call_argument
+                      (expression
+                        (identifier))))
+                  (missing_member_property))))))))))

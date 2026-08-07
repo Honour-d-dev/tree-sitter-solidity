@@ -855,6 +855,10 @@
           "named": true
         },
         {
+          "type": "incomplete_member_expression",
+          "named": true
+        },
+        {
           "type": "inline_array_expression",
           "named": true
         },
@@ -1205,6 +1209,76 @@
         "types": [
           {
             "type": "string",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "incomplete_member_expression",
+    "named": true,
+    "fields": {
+      "object": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "array_access",
+            "named": true
+          },
+          {
+            "type": "call_expression",
+            "named": true
+          },
+          {
+            "type": "identifier",
+            "named": true
+          },
+          {
+            "type": "member_expression",
+            "named": true
+          },
+          {
+            "type": "meta_type_expression",
+            "named": true
+          },
+          {
+            "type": "new_expression",
+            "named": true
+          },
+          {
+            "type": "parenthesized_expression",
+            "named": true
+          },
+          {
+            "type": "payable_conversion_expression",
+            "named": true
+          },
+          {
+            "type": "primitive_type",
+            "named": true
+          },
+          {
+            "type": "slice_access",
+            "named": true
+          },
+          {
+            "type": "type_cast_expression",
+            "named": true
+          },
+          {
+            "type": "user_defined_type",
+            "named": true
+          }
+        ]
+      },
+      "property": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "missing_member_property",
             "named": true
           }
         ]
@@ -3979,6 +4053,10 @@
   {
     "type": "minutes",
     "named": false
+  },
+  {
+    "type": "missing_member_property",
+    "named": true
   },
   {
     "type": "mload",

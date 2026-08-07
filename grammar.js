@@ -795,6 +795,7 @@ module.exports = grammar({
             $.unary_expression,
             $.update_expression,
             $.call_expression,
+            $.incomplete_member_expression,
             // TODO: $.function_call_options_expression,
             $.payable_conversion_expression,
             $.meta_type_expression,
@@ -919,6 +920,11 @@ module.exports = grammar({
             field('object', $._postfix_expression),
             '.',
             field('property', $.identifier)
+        )),
+
+        incomplete_member_expression: $ => prec.dynamic(1, seq(
+            field('object', $._postfix_expression),
+            field('property', alias('.', $.missing_member_property))
         )),
 
         array_access: $ => seq(
