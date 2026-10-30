@@ -92,8 +92,7 @@ contract Example {
             (expression_statement
               (expression
                 (array_access
-                  base: (expression
-                    (identifier))
+                  base: (identifier)
                   index: (expression
                     (number_literal)))))))))))
 
@@ -120,8 +119,7 @@ contract Example {
             (expression_statement
               (expression
                 (slice_access
-                  base: (expression
-                    (identifier))
+                  base: (identifier)
                   from: (expression
                     (number_literal)))))))))))
 
@@ -235,10 +233,10 @@ contract Example {
           (statement
             (expression_statement
               (expression
-                (struct_expression
-                  type: (expression
+                (call_options
+                  function: (expression
                     (identifier))
-                  (struct_field_assignment
+                  (named_argument
                     name: (identifier)
                     value: (expression
                       (identifier))))))))))))
@@ -772,12 +770,10 @@ contract Example {
             (expression_statement
               (expression
                 (array_access
-                  (expression
-                    (array_access
-                      (expression
-                        (primitive_type))
-                      (expression
-                        (number_literal))))
+                  (array_access
+                    (primitive_type)
+                    (expression
+                      (number_literal)))
                   (expression
                     (number_literal)))))))))))
 
@@ -809,12 +805,10 @@ contract Example {
                 (call_expression
                   (expression
                     (array_access
-                      (expression
-                        (array_access
-                          (expression
-                            (primitive_type))
-                          (expression
-                            (number_literal))))
+                      (array_access
+                        (primitive_type)
+                        (expression
+                          (number_literal)))
                       (expression
                         (number_literal))))
                   (call_argument
@@ -865,3 +859,90 @@ contract Example {
                       (expression
                         (identifier))))
                   (missing_member_property))))))))))
+
+================================================================================
+Subscript binds tighter than binary operators
+================================================================================
+
+contract Example {
+    function example() {
+        a[i] == a[j];
+    }
+}
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (contract_declaration
+    (identifier)
+    (contract_body
+      (function_definition
+        (identifier)
+        (function_body
+          (statement
+            (expression_statement
+              (expression
+                (binary_expression
+                  (expression
+                    (array_access
+                      (identifier)
+                      (expression
+                        (identifier))))
+                  (expression
+                    (array_access
+                      (identifier)
+                      (expression
+                        (identifier)))))))))))))
+
+================================================================================
+Function call options
+================================================================================
+
+contract Example {
+    function example() {
+        this.f{value: 1}(2);
+        new D{salt: s}();
+    }
+}
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (contract_declaration
+    (identifier)
+    (contract_body
+      (function_definition
+        (identifier)
+        (function_body
+          (statement
+            (expression_statement
+              (expression
+                (call_expression
+                  (expression
+                    (call_options
+                      (expression
+                        (member_expression
+                          (identifier)
+                          (identifier)))
+                      (named_argument
+                        (identifier)
+                        (expression
+                          (number_literal)))))
+                  (call_argument
+                    (expression
+                      (number_literal)))))))
+          (statement
+            (expression_statement
+              (expression
+                (call_expression
+                  (expression
+                    (call_options
+                      (expression
+                        (new_expression
+                          (type_name
+                            (user_defined_type
+                              (identifier)))))
+                      (named_argument
+                        (identifier)
+                        (expression
+                          (identifier))))))))))))))

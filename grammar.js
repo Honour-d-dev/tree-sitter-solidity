@@ -46,12 +46,10 @@ module.exports = grammar({
 
     conflicts: $ => [
         // The following conflicts are all due to the array type and array access expression ambiguity
-        [$._primary_expression, $.type_name],
         [$._primary_expression, $._identifier_path],
-        [$._primary_expression, $.member_expression, $._identifier_path],
-        [$.member_expression, $._identifier_path],
         [$._postfix_expression, $._identifier_path],
-        [$.layout_specifier, $.struct_expression],
+        [$._postfix_expression, $.type_name],
+        [$.layout_specifier, $.call_options],
         [$._nameless_parameter, $.parameter],
 
         [$._primary_expression, $.type_cast_expression],
@@ -796,11 +794,10 @@ module.exports = grammar({
             $.update_expression,
             $.call_expression,
             $.incomplete_member_expression,
-            // TODO: $.function_call_options_expression,
             $.payable_conversion_expression,
             $.meta_type_expression,
             $._primary_expression,
-            $.struct_expression,
+            $.call_options,
             $.ternary_expression,
             $.type_cast_expression,
         ),
@@ -910,6 +907,7 @@ module.exports = grammar({
             $.call_expression,
             $.array_access,
             $.slice_access,
+            $.inline_array_expression,
             $.type_cast_expression,
             $.payable_conversion_expression,
             $.meta_type_expression,
@@ -928,14 +926,14 @@ module.exports = grammar({
         )),
 
         array_access: $ => seq(
-            field('base', $.expression),
+            field('base', $._postfix_expression),
             '[',
             optional(field('index', $.expression)),
             ']'
         ),
 
         slice_access: $ => seq(
-            field('base', $.expression),
+            field('base', $._postfix_expression),
             '[',
             optional(field('from', $.expression)),
             ':',
@@ -943,14 +941,14 @@ module.exports = grammar({
             ']'
         ),
 
-        struct_expression: $ => seq(
-            field("type", $.expression),
+        call_options: $ => seq(
+            field("function", $.expression),
             "{",
-            commaSep($.struct_field_assignment),
+            commaSep($.named_argument),
             "}"
         ),
 
-        struct_field_assignment: $ => seq(
+        named_argument: $ => seq(
             field("name", $.identifier),
             ":",
             field("value", $.expression),

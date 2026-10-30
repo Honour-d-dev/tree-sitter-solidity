@@ -131,8 +131,8 @@
 (call_struct_argument
   name: (_) @variable.member)
 
-(struct_field_assignment
-  name: (identifier) @variable.member)
+(named_argument
+  name: (_) @variable.member)
 
 (enum_value) @constant
 

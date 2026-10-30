@@ -4415,7 +4415,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "struct_expression"
+          "name": "call_options"
         },
         {
           "type": "SYMBOL",
@@ -5546,6 +5546,10 @@
         },
         {
           "type": "SYMBOL",
+          "name": "inline_array_expression"
+        },
+        {
+          "type": "SYMBOL",
           "name": "type_cast_expression"
         },
         {
@@ -5629,7 +5633,7 @@
           "name": "base",
           "content": {
             "type": "SYMBOL",
-            "name": "expression"
+            "name": "_postfix_expression"
           }
         },
         {
@@ -5666,7 +5670,7 @@
           "name": "base",
           "content": {
             "type": "SYMBOL",
-            "name": "expression"
+            "name": "_postfix_expression"
           }
         },
         {
@@ -5715,12 +5719,12 @@
         }
       ]
     },
-    "struct_expression": {
+    "call_options": {
       "type": "SEQ",
       "members": [
         {
           "type": "FIELD",
-          "name": "type",
+          "name": "function",
           "content": {
             "type": "SYMBOL",
             "name": "expression"
@@ -5738,7 +5742,7 @@
               "members": [
                 {
                   "type": "SYMBOL",
-                  "name": "struct_field_assignment"
+                  "name": "named_argument"
                 },
                 {
                   "type": "REPEAT",
@@ -5751,7 +5755,7 @@
                       },
                       {
                         "type": "SYMBOL",
-                        "name": "struct_field_assignment"
+                        "name": "named_argument"
                       }
                     ]
                   }
@@ -5781,7 +5785,7 @@
         }
       ]
     },
-    "struct_field_assignment": {
+    "named_argument": {
       "type": "SEQ",
       "members": [
         {
@@ -7482,19 +7486,6 @@
   "conflicts": [
     [
       "_primary_expression",
-      "type_name"
-    ],
-    [
-      "_primary_expression",
-      "_identifier_path"
-    ],
-    [
-      "_primary_expression",
-      "member_expression",
-      "_identifier_path"
-    ],
-    [
-      "member_expression",
       "_identifier_path"
     ],
     [
@@ -7502,8 +7493,12 @@
       "_identifier_path"
     ],
     [
+      "_postfix_expression",
+      "type_name"
+    ],
+    [
       "layout_specifier",
-      "struct_expression"
+      "call_options"
     ],
     [
       "_nameless_parameter",
