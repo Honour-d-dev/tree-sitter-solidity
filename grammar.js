@@ -821,7 +821,7 @@ module.exports = grammar({
         // TODO: back this up with official documentation
         type_cast_expression: $ => prec.left(seq($.primitive_type,  $._call_arguments)),
 
-        ternary_expression: $ => prec.left(seq($.expression, "?", $.expression, ':', $.expression)),
+        ternary_expression: $ => prec.right(seq($.expression, "?", $.expression, ':', $.expression)),
 
         // TODO: make sure call arguments are part of solidity
         new_expression: $ => prec.left(seq('new', field("name", $.type_name), optional($._call_arguments))),

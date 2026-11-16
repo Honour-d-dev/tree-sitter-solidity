@@ -385,3 +385,43 @@ contract Example {
                         (number_literal))))
                     (expression
                     (number_literal)))))))))))
+
+================================================================================
+Ternary chains to the right
+================================================================================
+
+contract Example {
+    function example() {
+        int a = b ? c : d ? e : f;
+    }
+}
+
+--------------------------------------------------------------------------------
+
+(source_file
+    (contract_declaration
+    (identifier)
+    (contract_body
+        (function_definition
+        (identifier)
+        (function_body
+            (statement
+            (variable_declaration_statement
+                (variable_declaration
+                (type_name
+                    (primitive_type))
+                (identifier))
+                (expression
+                (ternary_expression
+                    (expression
+                    (identifier))
+                    (expression
+                    (identifier))
+                    (expression
+                    (ternary_expression
+                        (expression
+                        (identifier))
+                        (expression
+                        (identifier))
+                        (expression
+                        (identifier)))))))))))))
