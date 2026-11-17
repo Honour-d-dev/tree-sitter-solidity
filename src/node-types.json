@@ -1911,7 +1911,7 @@
         "required": false,
         "types": [
           {
-            "type": "expression",
+            "type": "user_defined_type",
             "named": true
           }
         ]

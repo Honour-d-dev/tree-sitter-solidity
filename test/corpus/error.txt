@@ -30,7 +30,7 @@ function test() {
     (function_body
       (statement
         (revert_statement
-          (expression
+          (user_defined_type
             (identifier))
           (revert_arguments))))))
 
@@ -50,8 +50,8 @@ function test() {
     (function_body
       (statement
         (revert_statement
-          (expression
-            (parenthesized_expression
+          (revert_arguments
+            (call_argument
               (expression
                 (identifier)))))))))
 

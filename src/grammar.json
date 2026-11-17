@@ -3477,29 +3477,40 @@
             "type": "CHOICE",
             "members": [
               {
-                "type": "FIELD",
-                "name": "error",
-                "content": {
-                  "type": "SYMBOL",
-                  "name": "expression"
-                }
-              },
-              {
-                "type": "BLANK"
-              }
-            ]
-          },
-          {
-            "type": "CHOICE",
-            "members": [
-              {
-                "type": "ALIAS",
-                "content": {
-                  "type": "SYMBOL",
-                  "name": "_call_arguments"
-                },
-                "named": true,
-                "value": "revert_arguments"
+                "type": "CHOICE",
+                "members": [
+                  {
+                    "type": "SEQ",
+                    "members": [
+                      {
+                        "type": "FIELD",
+                        "name": "error",
+                        "content": {
+                          "type": "SYMBOL",
+                          "name": "user_defined_type"
+                        }
+                      },
+                      {
+                        "type": "ALIAS",
+                        "content": {
+                          "type": "SYMBOL",
+                          "name": "_call_arguments"
+                        },
+                        "named": true,
+                        "value": "revert_arguments"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "ALIAS",
+                    "content": {
+                      "type": "SYMBOL",
+                      "name": "_call_arguments"
+                    },
+                    "named": true,
+                    "value": "revert_arguments"
+                  }
+                ]
               },
               {
                 "type": "BLANK"

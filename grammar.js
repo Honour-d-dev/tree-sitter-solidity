@@ -615,8 +615,13 @@ module.exports = grammar({
 
         revert_statement: $ => prec(PREC.REVERT, seq(
             'revert',
-            optional(field("error", $.expression)),
-            optional(alias($._call_arguments, $.revert_arguments)),
+            optional(choice(
+                seq(
+                    field("error", $.user_defined_type),
+                    alias($._call_arguments, $.revert_arguments),
+                ),
+                alias($._call_arguments, $.revert_arguments),
+            )),
             $._semicolon
         )),
 
