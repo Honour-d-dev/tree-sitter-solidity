@@ -56,10 +56,6 @@
             "named": true
           },
           {
-            "type": "new_expression",
-            "named": true
-          },
-          {
             "type": "parenthesized_expression",
             "named": true
           },
@@ -1322,10 +1318,6 @@
             "named": true
           },
           {
-            "type": "new_expression",
-            "named": true
-          },
-          {
             "type": "parenthesized_expression",
             "named": true
           },
@@ -1523,10 +1515,6 @@
           },
           {
             "type": "meta_type_expression",
-            "named": true
-          },
-          {
-            "type": "new_expression",
             "named": true
           },
           {
@@ -1970,10 +1958,6 @@
           },
           {
             "type": "meta_type_expression",
-            "named": true
-          },
-          {
-            "type": "new_expression",
             "named": true
           },
           {

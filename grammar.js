@@ -1,3 +1,4 @@
+/// <reference types="tree-sitter-cli/dsl" />
 // Precedence is used by the parser to determine which rule to apply when there are two rules that can be applied.
 // We use the PREC dict to globally define rule precedence
 // [N] corresponds to precedence table at https://docs.soliditylang.org/en/v0.8.24/cheatsheet.html#order-of-precedence-of-operators
@@ -911,7 +912,6 @@ module.exports = grammar({
             $.type_cast_expression,
             $.payable_conversion_expression,
             $.meta_type_expression,
-            $.new_expression,
         ),
 
         member_expression: $ => prec.dynamic(1, seq(

@@ -5559,10 +5559,6 @@
         {
           "type": "SYMBOL",
           "name": "meta_type_expression"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "new_expression"
         }
       ]
     },
