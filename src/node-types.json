@@ -1031,6 +1031,16 @@
             "named": true
           }
         ]
+      },
+      "return_type": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "return_type_definition",
+            "named": true
+          }
+        ]
       }
     },
     "children": {
